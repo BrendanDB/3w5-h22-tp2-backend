@@ -2,9 +2,17 @@ version: 2.1
 
 jobs:
   checkoutAndTest:
-    machine: "node/test"
+    machine: true
     steps:
-      - run: "npm test"
+      - run: "echo test"
+  integrateFrontend:
+    machine: true
+    steps:
+      - run: "echo integrate"
+  deploy:
+    machine: true
+    steps:
+      - run: "echo deploy"
 workflows:
   build:
     jobs:
