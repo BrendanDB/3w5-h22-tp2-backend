@@ -5,6 +5,7 @@ jobs:
     machine: true
     steps:
       - run: "echo checkoutAndTest"
+      - run: "cd .."
       - run: "npm install"
       - run: "npm test"
   integrateFrontend:
