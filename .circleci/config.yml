@@ -4,7 +4,9 @@ jobs:
   checkoutAndTest:
     machine: true
     steps:
-      - run: "echo test"
+      - run: "echo checkoutAndTest"
+      - run: "npm install"
+      - run: "npm test"
   integrateFrontend:
     machine: true
     steps:
@@ -17,5 +19,9 @@ workflows:
   build:
     jobs:
       - checkoutAndTest
-      - integrateFrontend
-      - deploy
+      - integrateFrontend:
+          requires:
+            - checkoutAndTest
+      - deploy:
+          requires:
+            - integrateFrontend
