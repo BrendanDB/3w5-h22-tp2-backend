@@ -5,8 +5,8 @@ jobs:
     machine: true
     steps:
       - run: "echo === Checkout and Test ==="
-      - run: "pwd && cd .. && npm install"
-      - run: "pwd && cd .. && npm test"
+      - run: "ls -al && npm install"
+      - run: "pwd && npm test"
   integrateFrontend:
     machine: true
     steps:
