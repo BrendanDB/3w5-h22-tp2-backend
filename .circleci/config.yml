@@ -1,14 +1,15 @@
 version: 2.1
 
 jobs:
+  build:
+    docker:
+      - image: cimg/node:17.5.0
   checkoutAndTest:
-    machine: true
     steps:
       - run: "echo === Checkout and Test ==="
       - run: "npm install"
       - run: "npm test"
   integrateFrontend:
-    machine: true
     steps:
       - run: "echo === Integrate Frontend ==="
       - run: "echo clone repos"
@@ -18,7 +19,6 @@ jobs:
       - run: "mkdir ./3w5-h22-tp2-backend/public"
       - run: "cp -rT ././3w5-h22-tp2-frontend/build ./3w5-h22-tp2-backend/public"
   deploy:
-    machine: true
     steps:
       - run: "echo === Deployment ==="
       - run: "cd ./3w5-h22-tp2-backend && ls -Rl"
