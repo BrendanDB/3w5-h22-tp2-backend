@@ -4,18 +4,24 @@ jobs:
   checkoutAndTest:
     machine: true
     steps:
-      - run: "echo checkoutAndTest"
-      - run: "cd .."
-      - run: "npm install"
-      - run: "npm test"
+      - run: " === Checkout and Test ==="
+      - run: "echo checkout && cd .. && npm install"
+      - run: "echo test && cd .. && npm test"
   integrateFrontend:
     machine: true
     steps:
-      - run: "echo integrate"
+      - run: " === Integrate Frontend ==="
+      - run: "echo clone repos"
+      - run: "git clone https://github.com/BrendanDB/3w5-h22-tp2-backend.git"
+      - run: "git clone https://github.com/BrendanDB/3w5-h22-tp2-frontend.git"
+      - run: "cd ./3w5-h22-tp2-frontend && npm install && npm build"
+      - run: "mkdir ./3w5-h22-tp2-backend/public"
+      - run: "cp -rT ././3w5-h22-tp2-frontend/build ./3w5-h22-tp2-backend/public"
   deploy:
     machine: true
     steps:
-      - run: "echo deploy"
+      - run: " === Deployment ==="
+      - run: "cd ./3w5-h22-tp2-backend && ls -Rl"
 workflows:
   build:
     jobs:
