@@ -2,29 +2,33 @@ version: 2.1
 
 jobs:
   checkoutAndTest:
-    docker:
-      - image: cimg/node:17.5.0
-    steps:
-      - run: "echo === Checkout and Test ==="
-      - run: "ls -al"
-      - run: "cd ../project && npm test"
+      build:
+        docker:
+          - image: cimg/node:17.5.0
+        steps:
+          - run: "echo === Checkout and Test ==="
+          - run: "npm install"
+          - run: "npm test"
   integrateFrontend:
-    docker:
-      - image: cimg/node:17.5.0
-    steps:
-      - run: "echo === Integrate Frontend ==="
-      - run: "echo clone repos"
-      - run: "git clone https://github.com/BrendanDB/3w5-h22-tp2-backend.git"
-      - run: "git clone https://github.com/BrendanDB/3w5-h22-tp2-frontend.git"
-      - run: "cd ./3w5-h22-tp2-frontend && npm install && npm build"
-      - run: "mkdir ./3w5-h22-tp2-backend/public"
-      - run: "cp -rT ././3w5-h22-tp2-frontend/build ./3w5-h22-tp2-backend/public"
+      build:
+        docker:
+          - image: cimg/node:17.5.0
+        steps:
+        - run: "echo === Integrate Frontend ==="
+        - run: "echo clone repos"
+        - run: "git clone https://github.com/BrendanDB/3w5-h22-tp2-backend.git"
+        - run: "git clone https://github.com/BrendanDB/3w5-h22-tp2-frontend.git"
+        - run: "cd ./3w5-h22-tp2-frontend && npm install && npm build"
+        - run: "mkdir ./3w5-h22-tp2-backend/public"
+        - run: "cp -rT ././3w5-h22-tp2-frontend/build ./3w5-h22-tp2-backend/public"
   deploy:
-    docker:
-      - image: cimg/node:17.5.0
-    steps:
-      - run: "echo === Deployment ==="
-      - run: "cd ./3w5-h22-tp2-backend && ls -Rl"
+      build:
+        docker:
+          - image: cimg/node:17.5.0
+        steps:
+          - run: "echo === Deployment ==="
+          - run: "cd ./3w5-h22-tp2-backend && ls -Rl"
+          
 workflows:
   build:
     jobs:
