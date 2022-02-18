@@ -6,8 +6,8 @@ jobs:
       - image: cimg/node:17.5.0
     steps:
       - run: "echo === Checkout and Test ==="
-      - run: "ls -al ../"
-      - run: "npm test"
+      - run: "cd ../project && npm install"
+      - run: "cd ../project && npm test"
   integrateFrontend:
     docker:
       - image: cimg/node:17.5.0
