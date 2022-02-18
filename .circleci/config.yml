@@ -5,8 +5,8 @@ jobs:
     machine: true
     steps:
       - run: "echo === Checkout and Test ==="
-      - run: "ls -al && npm install"
-      - run: "pwd && npm test"
+      - run: "cd ./3w5-h22-tp2-backend && npm install"
+      - run: "cd ./3w5-h22-tp2-backend && npm test"
   integrateFrontend:
     machine: true
     steps:
