@@ -8,17 +8,17 @@ jobs:
       - run: "echo === Checkout and Test ==="
       - run: "git clone https://github.com/BrendanDB/3w5-h22-tp2-backend.git"
       - run: "git clone https://github.com/BrendanDB/3w5-h22-tp2-frontend.git"
-      - run: "cd ./3w5-h22-tp2-frontend && npm install"
-      - run: "cd ./3w5-h22-tp2-backend && npm install && npm test"
+      - run: "cd /3w5-h22-tp2-frontend && npm install"
+      - run: "cd /3w5-h22-tp2-backend && npm install && npm test"
 
   integrateFrontend:
     docker:
       - image: cimg/node:17.5.0
     steps:
       - run: "echo === Integrate Frontend ==="
-      - run: "cd ./3w5-h22-tp2-frontend && npm install && npm run build"
-      - run: "mkdir ./3w5-h22-tp2-backend/public"
-      - run: "cp -rT ././3w5-h22-tp2-frontend/build ./3w5-h22-tp2-backend/public"
+      - run: "cd /3w5-h22-tp2-frontend && npm install && npm run build"
+      - run: "mkdir /3w5-h22-tp2-backend/public"
+      - run: "cp -rT /3w5-h22-tp2-frontend/build /3w5-h22-tp2-backend/public"
       - persist_to_workspace:
           root: .
           paths:
@@ -30,7 +30,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: "cd ./3w5-h22-tp2-backend && ls -Rl"
+      - run: "cd /3w5-h22-tp2-backend && ls -Rl"
 
 workflows:
   build:
