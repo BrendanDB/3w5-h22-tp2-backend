@@ -34,8 +34,8 @@ jobs:
       - run: "echo === Deployment ==="
       - run: "cd ./3w5-h22-tp2-backend && ls -Rl"
       - attach_workspace:
-          at: .
-          
+        at: .
+
 workflows:
   build:
     jobs:
