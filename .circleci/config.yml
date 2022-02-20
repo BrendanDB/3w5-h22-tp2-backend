@@ -16,8 +16,6 @@ jobs:
       - image: cimg/node:17.5.0
       - persist_to_workspace:
         root: .
-          paths:
-            - 3w5-h22-tp2-backend-test1
     steps:
       - run: "echo === Integrate Frontend ==="
       - run: "git clone https://github.com/BrendanDB/3w5-h22-tp2-backend.git"
