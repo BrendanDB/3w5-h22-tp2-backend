@@ -8,7 +8,7 @@ jobs:
       - run: "echo === Checkout and Test ==="
       - run: "git clone https://github.com/BrendanDB/3w5-h22-tp2-backend.git"
       - run: "git clone https://github.com/BrendanDB/3w5-h22-tp2-frontend.git"
-      - run: "cd ./3w5-h22-tp2-frontend && npm install && npm test"
+      - run: "cd ./3w5-h22-tp2-frontend && npm install"
       - run: "cd ./3w5-h22-tp2-backend && npm install && npm test"
   integrateFrontend:
     docker:
