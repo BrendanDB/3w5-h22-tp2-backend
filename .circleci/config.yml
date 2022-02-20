@@ -39,12 +39,8 @@ workflows:
     jobs:
       - checkoutAndTest
       - integrateFrontend:
-        - persist_to_workspace:
-          root: .
           requires:
             - checkoutAndTest
       - deploy:
-        - attach_workspace:
-          at: .
           requires:
             - integrateFrontend
