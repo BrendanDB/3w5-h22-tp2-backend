@@ -24,7 +24,8 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-          
+            - .
+
   deploy:
     docker:
       - image: cimg/node:17.5.0
@@ -38,7 +39,6 @@ workflows:
     jobs:
       - checkoutAndTest
       - integrateFrontend:
-            - .
           requires:
             - checkoutAndTest
       - deploy:
