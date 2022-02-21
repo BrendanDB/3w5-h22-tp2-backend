@@ -21,17 +21,12 @@ jobs:
       - run: "cd ./3w5-h22-tp2-frontend && npm install && npm run build"
       - run: "mkdir ./3w5-h22-tp2-backend/public"
       - run: "cp -rT ././3w5-h22-tp2-frontend/build ./3w5-h22-tp2-backend/public"
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
+
 
   deploy:
     docker:
       - image: cimg/node:17.5.0
     steps:
-      - attach_workspace:
-          at: .
       - run: "cd ./3w5-h22-tp2-backend && ls -Rl"
 
 workflows:
@@ -39,8 +34,14 @@ workflows:
     jobs:
       - checkoutAndTest
       - integrateFrontend:
+        - persist_to_workspace:
+          root: .
+          paths:
+            - .
           requires:
             - checkoutAndTest
       - deploy:
+        - attach_workspace:
+          at: .
           requires:
             - integrateFrontend
