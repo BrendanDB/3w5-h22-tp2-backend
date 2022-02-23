@@ -38,7 +38,6 @@ workflows:
   build:
     jobs:
       - checkoutAndTest
-    jobs:
       - integrateFrontend:
           requires:
             - checkoutAndTest
